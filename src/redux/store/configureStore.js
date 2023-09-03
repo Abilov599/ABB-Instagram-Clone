@@ -1,18 +1,12 @@
-// configureStore.js
-import { createStore, applyMiddleware, compose } from "redux"; // Import compose
-import rootReducer from "../reducers/postsReducer.js";
 import thunk from "redux-thunk";
+import postsSlice from "../slice/postsSlice";
+import { configureStore } from "@reduxjs/toolkit";
 
-// Add Redux DevTools extension if it's available, or use compose from Redux
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = configureStore({
+  reducer: {
+    posts: postsSlice,
+  },
+  middleware: [thunk],
+});
 
-const middleware = [thunk];
-
-const configureStore = () => {
-  return createStore(
-    rootReducer,
-    composeEnhancers(applyMiddleware(...middleware))
-  );
-};
-
-export default configureStore;
+export default store;
