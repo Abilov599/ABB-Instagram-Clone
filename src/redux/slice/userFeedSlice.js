@@ -1,15 +1,14 @@
-// postsSlice.js
-import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { getUserFeed } from "../../api/user";
 
 // Create an async thunk for fetching posts data
-export const fetchPostsData = createAsyncThunk("fetchPostsData", async () => {
-  const response = await axios("https://jsonplaceholder.typicode.com/posts");
-  return response.data;
-});
+export const fetchUserFeedData = createAsyncThunk(
+  "fetchUserFeedData",
+  getUserFeed
+);
 
-const postsSlice = createSlice({
-  name: "posts",
+const userFeedSlice = createSlice({
+  name: "userFeed",
   initialState: {
     data: [],
     loading: false,
@@ -18,19 +17,19 @@ const postsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchPostsData.pending, (state) => {
+      .addCase(fetchUserFeedData.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchPostsData.fulfilled, (state, action) => {
+      .addCase(fetchUserFeedData.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
       })
-      .addCase(fetchPostsData.rejected, (state, action) => {
+      .addCase(fetchUserFeedData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
   },
 });
 
-export default postsSlice.reducer;
+export default userFeedSlice.reducer;

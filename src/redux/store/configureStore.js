@@ -1,10 +1,10 @@
 import thunk from "redux-thunk";
-import postsSlice from "../slice/postsSlice";
+import userFeedSlice from "../slice/userFeedSlice";
 import { configureStore } from "@reduxjs/toolkit";
 
 const store = configureStore({
   reducer: {
-    posts: postsSlice,
+    userFeed: userFeedSlice,
   },
   middleware: [thunk],
 });
