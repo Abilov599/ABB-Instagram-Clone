@@ -9,6 +9,8 @@ import userApi from "./";
 //   }
 // }
 
+
+
 async function getUserByUserName(username) {
   try {
     const res = await userApi.get(`/?username=${username}`);

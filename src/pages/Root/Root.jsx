@@ -1,6 +1,7 @@
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 const { Header, Footer } = Layout;
+import {Link} from "react-router-dom"
 
 const headerStyle = {
   textAlign: "center",
@@ -23,6 +24,7 @@ const Root = () => {
       <Header style={headerStyle}>Header</Header>
       <Outlet />
       <Footer style={footerStyle}>Footer</Footer>
+      <Link to="/person">Profile</Link>
     </Layout>
   );
 };
