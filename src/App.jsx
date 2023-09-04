@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, Root } from "./pages";
+import { Home, Root, Person } from "./pages";
 import { useSelector } from "react-redux";
 import Authentication from "./components/Authentication";
 
@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Root />}>
             <Route index element={<Home />} />
+            <Route path="/person" element={<Person />} />
           </Route>
         </Routes>
       ) : (
