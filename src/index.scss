@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login, .signup {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid grey;
+  padding: 20px;
+  margin-bottom: 10px;
+  img {
+    width: 175px;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input {
+    background-color: #ffffff24;
+    border: 1px solid grey;
+    border-radius: 3px;
+    padding: 12px;
+    margin-bottom: 20px;
+    &:focus {
+      outline: 1px solid grey;
+    }
+  }
+  button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    background-color: #0095f6;
+    font-weight: bolder;
+    &:hover{
+        cursor: pointer;
+        opacity: 80%;
+    }
+  }
+}
