@@ -3,14 +3,17 @@ import {Link} from "react-router-dom"
 import HeaderUserPage from "../../components/HeaderUserPage/HeaderUserPage";
 import PostColumn from "../../components/PostColumn/PostColumn";
 
+// import { toggleSubscriptionStatus } from '../../redux/slice/userFeedSlice';
 import { Layout } from "antd";
 const {Header, Content } = Layout
 
 const Person = () => {
+
+
     window.scrollTo(0, 0)
     return (
      <Layout>
-      <Header style={headerUserStyle}><HeaderUserPage /></Header>
+      <Header style={headerUserStyle}><HeaderUserPage/></Header>
       <Content style={postColumn}><PostColumn/></Content>
       <Link to ="/">Home</Link>
     </Layout>
