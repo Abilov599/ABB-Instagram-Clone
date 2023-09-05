@@ -29,6 +29,8 @@ const Login = () => {
       );
 
       if (response.payload && response.payload.status === "success") {
+        localStorage.setItem("loggedIn", signupSuccess);
+
         alert("Login successful");
         console.log("Login successful", response.payload);
       } else {
@@ -40,6 +42,7 @@ const Login = () => {
       console.error("Login failed", error);
     }
   };
+
   return (
     <section className="login">
       <img src={instagram} alt="instagram" />

@@ -1,13 +1,16 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, Root, Person } from "./pages";
-import { useSelector } from "react-redux";
-import Authentication from "./components/Authentication";
+import { Home, Root, Person, Authentication } from "./pages";
+import { useEffect, useState } from "react";
 
 function App() {
-  const user = useSelector((state) => state.user.user);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    setIsLoggedIn(localStorage.getItem("loggedIn"));
+  });
+
   return (
     <>
-      {user ? (
+      {isLoggedIn ? (
         <Routes>
           <Route path="/" element={<Root />}>
             <Route index element={<Home />} />
