@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import instagram from "../../assets/Instagram.png";
-import { registerUser } from "../../redux/slice/userSlice";
-import { useDispatch } from "react-redux";
-import { setSignupSuccess } from "../../redux/slice/userSlice";
+import { registerUser } from "../../api/auth";
 
 const Signup = () => {
   const [userName, setUserName] = useState("");
@@ -10,27 +8,23 @@ const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const dispatch = useDispatch()
-
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await dispatch(
-        registerUser({
-          username: userName,
-          password: password,
-          firstName: firstName,
-          lastName: lastName,
-        })
-      );
-  
-      if (response.payload && response.payload.status === "success") {
-        dispatch(setSignupSuccess(true));
+      const response = await registerUser({
+        username: userName,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+      });
+
+      console.log(response);
+      if (response && response.status === "success") {
         alert("Registration successful");
-        console.log(response.payload);
+        localStorage.setItem("loggedIn", response.token);
       } else {
         alert("Registration failed");
-        console.error("Registration failed", response.payload);
+        console.error("Registration failed", response);
       }
     } catch (error) {
       alert("Registration failed");
