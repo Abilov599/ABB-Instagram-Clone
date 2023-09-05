@@ -1,45 +1,35 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import instagram from "../../assets/Instagram.png";
-import { loginUser } from "../../redux/slice/userSlice";
+import { loginUser } from "../../api/auth";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { setToken } from "../../redux/slice/tokenSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-
-  const dispatch = useDispatch();
-
-  const signupSuccess = useSelector((state) => state.user.signupSuccess);
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (!signupSuccess) {
-      alert("Please sign up first.");
-      return;
-    }
-
     try {
-      const response = await dispatch(
-        loginUser({
-          username: userName,
-          password: password,
-        })
-      );
+      const response = await loginUser({
+        username: userName,
+        password: password,
+      });
 
-      if (response.payload && response.payload.status === "success") {
-        alert("Login successful");
-        console.log("Login successful", response.payload);
+      if (response && response.status === "success") {
+        dispatch(setToken(response.token));
       } else {
         alert("Login failed");
-        console.error("Login failed", response.payload);
+        console.error("Login failed", response);
       }
     } catch (error) {
       alert("Login failed");
       console.error("Login failed", error);
     }
   };
+
   return (
     <section className="login">
       <img src={instagram} alt="instagram" />

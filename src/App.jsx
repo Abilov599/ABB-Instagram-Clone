@@ -1,13 +1,20 @@
 import { Route, Routes } from "react-router-dom";
-import { Home, Root, Person } from "./pages";
-import { useSelector } from "react-redux";
-import Authentication from "./components/Authentication";
+import { Home, Root, Person, Authentication } from "./pages";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setToken } from "./redux/slice/tokenSlice";
 
 function App() {
-  const user = useSelector((state) => state.user.user);
+  const token = useSelector((state) => state.token.token);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setToken(localStorage.getItem("token") || ""));
+  }, [dispatch]);
+
   return (
     <>
-      {user ? (
+      {!!token ? (
         <Routes>
           <Route path="/" element={<Root />}>
             <Route index element={<Home />} />

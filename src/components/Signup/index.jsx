@@ -1,36 +1,30 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import instagram from "../../assets/Instagram.png";
-import { registerUser } from "../../redux/slice/userSlice";
+import { registerUser } from "../../api/auth";
 import { useDispatch } from "react-redux";
-import { setSignupSuccess } from "../../redux/slice/userSlice";
+import { setToken } from "../../redux/slice/tokenSlice";
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const dispatch = useDispatch()
-
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      const response = await dispatch(
-        registerUser({
-          username: userName,
-          password: password,
-          firstName: firstName,
-          lastName: lastName,
-        })
-      );
-  
-      if (response.payload && response.payload.status === "success") {
-        dispatch(setSignupSuccess(true));
-        alert("Registration successful");
-        console.log(response.payload);
+      const response = await registerUser({
+        username: userName,
+        password: password,
+        firstName: firstName,
+        lastName: lastName,
+      });
+      if (response && response.status === "success") {
+        dispatch(setToken(response.token));
       } else {
         alert("Registration failed");
-        console.error("Registration failed", response.payload);
+        console.error("Registration failed", response);
       }
     } catch (error) {
       alert("Registration failed");

@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import loginPic from "../../assets/login.png";
-import Login from "../Login";
+import Login from "../../components/Login";
 import "./style.scss";
-import Signup from "../Signup";
+import Signup from "../../components/Signup";
 
 const Authentication = () => {
-  const [active, useActive] = useState(true);
+  const [active, setActive] = useState(true);
 
   return (
     <main className="auth">
@@ -18,11 +18,13 @@ const Authentication = () => {
           <span>
             {active ? (
               <>
-                Don't have an account? <button onClick={() => useActive(!active)}>Sign Up</button>
+                Don't have an account?{" "}
+                <button onClick={() => setActive(!active)}>Sign Up</button>
               </>
             ) : (
               <>
-                have an account? <button onClick={() => useActive(!active)}>Log In</button>
+                have an account?{" "}
+                <button onClick={() => setActive(!active)}>Log In</button>
               </>
             )}
           </span>
@@ -32,4 +34,4 @@ const Authentication = () => {
   );
 };
 
-export default Authentication;
+export { Authentication };
