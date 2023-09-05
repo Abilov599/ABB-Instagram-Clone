@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import loginPic from "../../assets/login.png";
 import Login from "../../components/Login";
 import "./style.scss";
@@ -34,4 +34,4 @@ const Authentication = () => {
   );
 };
 
-export {Authentication};
+export { Authentication };

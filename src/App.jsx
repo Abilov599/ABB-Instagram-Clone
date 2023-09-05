@@ -5,8 +5,10 @@ import { useEffect, useState } from "react";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   useEffect(() => {
-    setIsLoggedIn(localStorage.getItem("loggedIn"));
-  });
+    localStorage.getItem("loggedIn") ? setIsLoggedIn(true) : null;
+  }, []);
+
+  console.log("isLoggedIn", isLoggedIn);
 
   return (
     <>
