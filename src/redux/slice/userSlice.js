@@ -1,59 +1,6 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import {registerUser,loginUser} from "../../api/auth"
 
-
-const registerUser = createAsyncThunk(
-  "user/register",
-  async (userData, { rejectWithValue }) => {
-    try {
-      const response = await fetch(
-        "https://instagram.brightly-shining.cloud/api/v1/auth/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        }
-      );
-
-      const data = await response.json();
-      if (!response.ok) {
-        return rejectWithValue(data);
-      }
-
-      return data;
-    } catch (error) {
-      return rejectWithValue({ error: "Network error" });
-    }
-  }
-);
-
-const loginUser = createAsyncThunk(
-  "user/login",
-  async (credentials, { rejectWithValue }) => {
-    try {
-      const response = await fetch(
-        "https://instagram.brightly-shining.cloud/api/v1/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(credentials),
-        }
-      );
-
-      const data = await response.json();
-      if (!response.ok) {
-        return rejectWithValue(data);
-      }
-
-      return data;
-    } catch (error) {
-      return rejectWithValue({ error: "Network error" });
-    }
-  }
-);
 
 const initialState = {
   user: null,
