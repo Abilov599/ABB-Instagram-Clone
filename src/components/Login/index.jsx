@@ -1,8 +1,11 @@
 import { useState } from "react";
 import instagram from "../../assets/Instagram.png";
 import { loginUser } from "../../api/auth";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../redux/slice/tokenSlice";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,13 +18,8 @@ const Login = () => {
         password: password,
       });
 
-      console.log(response);
-
       if (response && response.status === "success") {
-        localStorage.setItem("loggedIn", response.token);
-
-        alert("Login successful");
-        console.log("Login successful", response);
+        dispatch(setToken(response.token));
       } else {
         alert("Login failed");
         console.error("Login failed", response);

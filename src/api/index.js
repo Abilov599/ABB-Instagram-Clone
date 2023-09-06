@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "https://instagram.brightly-shining.cloud/api/v1/";
 const customHeaders = {
-  Authorization: "Bearer ec8bd96c25fb46319cdf49779182333c",
+  Authorization: `Bearer ${localStorage.getItem("token")}`,
   "Content-Type": "application/json",
   // Add any other headers you need here
 };

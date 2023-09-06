@@ -1,8 +1,11 @@
 import { useState } from "react";
 import instagram from "../../assets/Instagram.png";
 import { registerUser } from "../../api/auth";
+import { useDispatch } from "react-redux";
+import { setToken } from "../../redux/slice/tokenSlice";
 
 const Signup = () => {
+  const dispatch = useDispatch();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -17,11 +20,8 @@ const Signup = () => {
         firstName: firstName,
         lastName: lastName,
       });
-
-      console.log(response);
       if (response && response.status === "success") {
-        alert("Registration successful");
-        localStorage.setItem("loggedIn", response.token);
+        dispatch(setToken(response.token));
       } else {
         alert("Registration failed");
         console.error("Registration failed", response);
