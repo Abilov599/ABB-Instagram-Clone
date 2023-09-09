@@ -1,0 +1,130 @@
+.showPostModal {
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  inset: 40px;
+  outline: none;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.modal {
+  height: 100%;
+  img {
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  display: flex;
+  align-items: center;
+  &__left {
+    width: 50%;
+    height: 100%;
+    img {
+      aspect-ratio: 1 / 1;
+    }
+  }
+}
+
+.right {
+    display: grid;
+    grid-template-rows: auto 4fr 1.5fr 1fr;
+    gap: 1rem;
+    height: 100%;
+    width: 50%;
+    align-content: center;
+    padding: 10px;
+    overflow: auto;
+  
+    img{
+        width: 30px;
+        border-radius: 50%;
+    }
+  
+    &__date {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 5px;
+      img {
+        border-radius: 50%;
+      }
+    }
+  
+    svg {
+      font-size: 30px;
+      color: grey;
+    }
+  
+    &__addcomment {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid grey;
+      // background-color: red;
+      input {
+        border: none;
+        outline: none;
+        padding: 20px;
+        width: 500px;
+        &::placeholder {
+          font-size: 20px;
+        }
+      }
+      button {
+          font-size: 20px;
+          background-color: transparent;
+          color: blue;
+          outline: none;
+          border: none;
+      }
+    }
+  
+    &__comment {
+      border-bottom: 1px solid grey;
+    }
+  
+    &__comment-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+    }
+  
+    &__time {
+      margin-top: 10px;
+    }
+  
+    &__icons {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &-left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+  }
+  
+  .right__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    &-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .author{
+    font-weight: bolder;
+  }
+
+  .date{
+    color: grey;
+    font-weight: bolder;
+    font-size: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
