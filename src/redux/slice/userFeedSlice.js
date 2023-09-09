@@ -3,10 +3,11 @@ import { getUserFeed } from "../../api/user";
 
 export const subscribeToUser = createAction("userFeed/subscribeToUser");
 export const unsubscribeFromUser = createAction("userFeed/unsubscribeFromUser");
+
 // Create an async thunk for fetching posts data
 export const fetchUserFeedData = createAsyncThunk(
   "fetchUserFeedData",
-  getUserFeed
+  (token) => getUserFeed(token)
 );
 
 const userFeedSlice = createSlice({
