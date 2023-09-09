@@ -9,8 +9,6 @@ import userApi from "./";
 //   }
 // }
 
-
-
 async function getUserByUserName(username) {
   try {
     const res = await userApi.get(`/?username=${username}`);
@@ -20,9 +18,15 @@ async function getUserByUserName(username) {
   }
 }
 
-async function getUserFeed() {
+async function getUserFeed(token) {
   try {
-    const res = await userApi.get(`/user/feed`);
+    const res = await userApi.get(`/user/feed`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+        // Add any other headers you need here
+      },
+    });
     return res.data.data;
   } catch (err) {
     console.error(err);

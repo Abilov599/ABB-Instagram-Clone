@@ -11,6 +11,9 @@ const PostColumn = () => {
     loading,
     error,
   } = useSelector((state) => state.userFeed);
+
+  const token = useSelector((state) => state.token.token);
+
   const [hoveredPost, setHoveredPost] = useState(null);
   console.log(userFeed);
 
@@ -19,8 +22,8 @@ const PostColumn = () => {
   const [currentPost,setCurrentPost] = useState(null)
 
   useEffect(() => {
-    dispatch(fetchUserFeedData());
-  }, [dispatch]);
+    dispatch(fetchUserFeedData(token));
+  }, [dispatch, token]);
 
   const handlePostHover = (post) => {
     setHoveredPost(post);
@@ -37,9 +40,9 @@ const PostColumn = () => {
   ) : (
     <>
       <div className="post-grid">
-        {userFeed.map((post) => (
+        {userFeed.map((post, i) => (
           <div
-            key={post.id}
+            key={i}
             className="post-item"
             onMouseEnter={() => handlePostHover(post)}
             onMouseLeave={handleMouseLeave}

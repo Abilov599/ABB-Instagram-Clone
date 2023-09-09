@@ -1,34 +1,31 @@
 import "./Person.scss"
-import {Link} from "react-router-dom"
-import HeaderUserPage from "../../components/HeaderUserPage/HeaderUserPage";
 import PostColumn from "../../components/PostColumn/PostColumn";
-
-// import { toggleSubscriptionStatus } from '../../redux/slice/userFeedSlice';
+import PersonProfile from "../../components/PersonProfile/PersonProfile"
 import { Layout } from "antd";
 const {Header, Content } = Layout
-
+import "./Person.scss"
 const Person = () => {
 
     window.scrollTo(0, 0)
     return (
      <Layout>
-      <Header style={headerUserStyle}><HeaderUserPage/></Header>
+      <Header style={headerUserStyle}><PersonProfile/></Header>
       <Content style={postColumn}><PostColumn/></Content>
-      <Link to ="/">Home</Link>
     </Layout>
     )
 }
 
 const headerUserStyle= {
-  textAlign: "center",
-  minHeight: 120,
-  lineHeight: "120px",
-  color: "#fff",
-  backgroundColor: "pink",
+  maxWidth:"1200px",
+  marginRight:"auto",
+  marginLeft:"auto",
+  minHeight: 220,
+  backgroundColor: "white",
 };
 
 const postColumn = {
 maxWidth:"1200px",
+backgroundColor: "white",
 marginRight:"auto",
 marginLeft:"auto",
 marginTop:"20px"
