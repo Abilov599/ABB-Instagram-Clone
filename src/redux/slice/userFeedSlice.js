@@ -1,11 +1,10 @@
-import { createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getUserFeed } from "../../api/user";
-
 
 // Create an async thunk for fetching posts data
 export const fetchUserFeedData = createAsyncThunk(
   "fetchUserFeedData",
-  getUserFeed
+  (token) => getUserFeed(token)
 );
 
 const userFeedSlice = createSlice({
