@@ -1,0 +1,52 @@
+.post-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+  
+    .post-item {
+    width: calc(33.33% - 20px); 
+    margin: 10px; 
+    overflow: hidden;
+    position: relative;
+    height: 0;
+    padding-bottom: 30%;
+  
+      .post-image {
+    aspect-ratio:1/1;
+    width: 100%;
+    object-fit: cover;
+    border: 1px solid #ddd;
+      }
+  
+      &:hover {
+        filter: brightness(80%);
+      }
+  
+      .post-info-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        pointer-events: none;
+  
+        div {
+          margin: 5px;
+        }
+      }
+  
+      &:hover .post-info-overlay {
+        opacity: 1;
+      }
+    }
+  }
+  

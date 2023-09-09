@@ -9,7 +9,6 @@ const {Header, Content } = Layout
 
 const Person = () => {
 
-
     window.scrollTo(0, 0)
     return (
      <Layout>
@@ -29,10 +28,10 @@ const headerUserStyle= {
 };
 
 const postColumn = {
-  textAlign: "center",
-  lineHeight: "120px",
-  color: "#fff",
-  backgroundColor: "red",
+maxWidth:"1200px",
+marginRight:"auto",
+marginLeft:"auto",
+marginTop:"20px"
 };
 
 export { Person };
