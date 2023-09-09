@@ -18,7 +18,7 @@ async function getUserByUserName(username) {
   }
 }
 
-async function getUserFeed(token) {
+async function getUserFeed(token = localStorage.getItem("token")) {
   try {
     const res = await userApi.get(`/user/feed`, {
       headers: {
