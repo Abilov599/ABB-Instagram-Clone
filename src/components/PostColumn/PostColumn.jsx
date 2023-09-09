@@ -36,6 +36,7 @@ const PostColumn = () => {
             onMouseLeave={handleMouseLeave}
           >
             <img src={post.imageUrl} alt={post.caption} className="post-image" />
+           
             {hoveredPost && hoveredPost.id === post.id && (
               <div className="post-info-overlay">
                 <div><i className="fa-regular fa-xl fa-heart">&nbsp;</i>{post.likes.length}</div>

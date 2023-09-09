@@ -1,30 +1,18 @@
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
-const { Header, Footer } = Layout;
-import {Link} from "react-router-dom"
-
+const { Header } = Layout;
+import Head from "../../components/Head/Head"
 const headerStyle = {
   textAlign: "center",
-  color: "#fff",
-  height: 64,
-  paddingInline: 50,
-  lineHeight: "64px",
-  backgroundColor: "#7dbcea",
-};
-
-const footerStyle = {
-  textAlign: "center",
-  color: "#fff",
-  backgroundColor: "#7dbcea",
+  height: 60,
+  backgroundColor: "#a0d8ff",
 };
 
 const Root = () => {
   return (
     <Layout>
-      <Header style={headerStyle}>Header</Header>
+      <Header style={headerStyle}><Head/></Header>
       <Outlet />
-      <Footer style={footerStyle}>Footer</Footer>
-      <Link to="/person">Profile</Link>
     </Layout>
   );
 };
