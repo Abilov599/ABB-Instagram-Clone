@@ -17,9 +17,8 @@ const PostColumn = () => {
   const [hoveredPost, setHoveredPost] = useState(null);
   console.log(userFeed);
 
-
   const [postModal, setPostModal] = useState(false);
-  const [currentPost,setCurrentPost] = useState(null)
+  const [currentPost, setCurrentPost] = useState(null);
 
   useEffect(() => {
     dispatch(fetchUserFeedData(token));
@@ -46,7 +45,10 @@ const PostColumn = () => {
             className="post-item"
             onMouseEnter={() => handlePostHover(post)}
             onMouseLeave={handleMouseLeave}
-            onClick={() => {setPostModal(true);setCurrentPost(post)}}
+            onClick={() => {
+              setPostModal(true);
+              setCurrentPost(post);
+            }}
           >
             <img
               src={post.imageUrl}
@@ -68,7 +70,7 @@ const PostColumn = () => {
           </div>
         ))}
       </div>
-      <ShowPostModal 
+      <ShowPostModal
         postModal={postModal}
         setPostModal={setPostModal}
         currentPost={currentPost}

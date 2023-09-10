@@ -4,7 +4,15 @@
   padding: 0;
 }
 
-.login, .signup {
+.container {
+  max-width: 1200px;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.login,
+.signup {
   display: flex;
   flex-direction: column;
   border: 1px solid grey;
@@ -38,9 +46,9 @@
     color: white;
     background-color: #0095f6;
     font-weight: bolder;
-    &:hover{
-        cursor: pointer;
-        opacity: 80%;
+    &:hover {
+      cursor: pointer;
+      opacity: 80%;
     }
   }
 }
