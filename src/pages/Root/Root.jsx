@@ -5,7 +5,7 @@ import Head from "../../components/Head/Head"
 const headerStyle = {
   textAlign: "center",
   height: 60,
-  backgroundColor: "#a0d8ff",
+  backgroundColor: "#fff",
 };
 
 const Root = () => {
